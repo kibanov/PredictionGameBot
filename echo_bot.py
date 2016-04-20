@@ -1,6 +1,9 @@
 import telebot
+import yaml
 
-bot = telebot.TeleBot("TOKEN")
+config = yaml.safe_load(open("conf.yml"))
+
+bot = telebot.TeleBot(config["token"])
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
