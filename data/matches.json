@@ -1,0 +1,20 @@
+{
+	"match_no": 1,
+	"type": "Group",
+	"group": "A",
+	"team_1": "France",
+	"team_2": "Romania",
+	"stadium": "Stade de France, Saint-Denis",
+	"date": ISODate("2016-06-10T21:00:00Z"),
+	"quote": 0.7
+}
+{
+	"match_no": 2,
+	"type": "Group",
+	"group": "A",
+	"team_1": "Albania",
+	"team_2": "Switzerland",
+	"stadium": "Stade Bollaert-Delelis, Lens",
+	"date": ISODate("2016-06-11T15:00:00Z"),
+	"quote": 0.7
+}

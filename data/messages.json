@@ -1,0 +1,32 @@
+{
+	"name": "start",
+	"body": [
+		{"en": "Welcome to Euro 2016 prediction contest! Type /help for help, /rules for rules or /predict to make your predictions"},
+		{"de": "Willkommen!"},
+		{"ru": "Добро пожаловать!"}
+	]
+}
+{
+	"name": "help",
+	"body": [
+		{"en": "/start View start message\n/help View this message\n/predict Make prediction"},
+		{"de": "Hilfe"},
+		{"ru": "Помощь"}
+	]
+}
+{
+	"name": "rules",
+	"body": [
+		{"en": "You need to answer general questions (Who will win the tournament? Who will score the most goals?) And three questions about each match:\n1. Who will win the game or will there be a draw?\n2. Wha"},
+		{"de": "Regeln"},
+		{"ru": "Правила"}
+	]
+}
+{
+	"name": "error",
+	"body": [
+		{"en": "OOOOOOOPS! Something went wrong!"},
+		{"de": "UUUUUUUPS! Ein Fehler ist angetreten!"},
+		{"ru": "УУУУУУУПС! Произошла ошибка!"}
+	]
+}
