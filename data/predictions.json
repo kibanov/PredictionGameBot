@@ -1,0 +1,21 @@
+{
+	"user_id": 1,
+	"name": "Max",
+	"groups": "super_group",
+	"predictions": [
+		{
+			"match_no": 1,
+			"winner": 1,
+			"goals": 1,
+			"total": 0,
+			"points": 0
+		},
+		{
+			"match_no": 2,
+			"winner": 0,
+			"goals": 0,
+			"total": 0
+		}
+	],
+	"total_points": 0
+}

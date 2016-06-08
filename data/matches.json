@@ -6,7 +6,8 @@
 	"team_2": "Romania",
 	"stadium": "Stade de France, Saint-Denis",
 	"date": ISODate("2016-06-10T21:00:00Z"),
-	"quote": 0.7
+	"quote": 0.7,
+	"active": 1
 }
 {
 	"match_no": 2,
@@ -16,5 +17,6 @@
 	"team_2": "Switzerland",
 	"stadium": "Stade Bollaert-Delelis, Lens",
 	"date": ISODate("2016-06-11T15:00:00Z"),
-	"quote": 0.7
+	"quote": 0.7,
+	"active": 1
 }
