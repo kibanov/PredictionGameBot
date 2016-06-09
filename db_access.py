@@ -9,14 +9,17 @@ matches_collection = eurodb.matches
 
 # ADD USER:
 def add_user(uid):
-    user_search = predictions_collection.count({"user_id": uid})
-    if user_search == 0:
-        post = {"user_id": uid}
-        user_id = predictions_collection.insert_one(post).inserted_id
-    else:
-        existing_user = predictions_collection.find_one({"user_id": uid})
-        user_id = existing_user.get('_id')
-    return (user_id)
+    try:
+        user_search = predictions_collection.count({"user_id": uid})
+        if user_search == 0:
+            post = {"user_id": uid}
+            user_id = predictions_collection.insert_one(post).inserted_id
+        else:
+            existing_user = predictions_collection.find_one({"user_id": uid})
+            user_id = existing_user.get('_id')
+        return (user_id)
+    except Exception as e:
+        return(0)
 
 def add_prediction(uid, matchid, winner, goals, total):
     result = predictions_collection.update_one({"user_id": uid}, {"$addToSet": {"predicted_matches" : matchid}})
