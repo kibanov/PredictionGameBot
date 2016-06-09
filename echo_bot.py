@@ -1,5 +1,6 @@
 import telebot
 import yaml
+import sys
 from telebot import types
 
 import db_access
@@ -8,8 +9,8 @@ config = yaml.safe_load(open("conf.yml"))
 
 bot = telebot.TeleBot(config["token"])
 
-team1 = ''
-team2 = ''
+match_dict = {}
+pred_dict = {}
 
 class Prediction:
     def __init__(self, uid):
@@ -19,7 +20,10 @@ class Prediction:
         self.goal = None
         self.total = None
 
-pred = Prediction(1)
+class Match:
+    def __init__(self, teamname1, teamname2):
+        self.team1 = teamname1
+        self.team2 = teamname2
 
 
 @bot.message_handler(commands=['start'])
@@ -90,10 +94,8 @@ def process_group(message):
 def send_predict(message):
     try:
         chat_id = message.chat.id
-        global team1
-        global team2
-        global pred
         pred = Prediction(chat_id)
+        pred_dict[chat_id] = pred
         next_match = db_access.get_next_match(chat_id)
         if(next_match == 0):
             bot.send_message(chat_id, "Sorry! There are no matches in our database you can currently predict!")
@@ -101,35 +103,38 @@ def send_predict(message):
             pred.matchid = [c['match_no'] for c in next_match][0]
             team1 = [c['team_1'] for c in next_match][0]
             team2 = [c['team_2'] for c in next_match][0]
+            match = Match(team1, team2)
+            match_dict[chat_id] = match
             stage = [c['type'] for c in next_match][0]
             quote = [c['quote'] for c in next_match][0]
             if (stage == 'Group'):
                 stage = stage + ' ' + [c['group'] for c in next_match][0]
             markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
-            team1button = types.KeyboardButton(team1)
-            team2button = types.KeyboardButton(team2)
+            team1button = types.KeyboardButton(match.team1)
+            team2button = types.KeyboardButton(match.team2)
             drawbutton = types.KeyboardButton("Draw")
             markup.add(team1button, team2button, drawbutton)
-            msg = bot.reply_to(message, stage + ': ' + team1 + ' vs. ' + team2 + '(Quote: ' + str(quote) + ')\n Who will win the game?', reply_markup=markup)
+            msg = bot.reply_to(message, stage + ': ' + match.team1 + ' vs. ' + match.team2 + '(Quote: ' + str(quote) + ')\n Who will win the game?', reply_markup=markup)
             bot.register_next_step_handler(msg, process_win_step)
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
+        print("Unexpected error:", sys.exc_info()[0])
 
 def process_win_step(message):
     try:
         chat_id = message.chat.id
-        global pred
-        print(team1)
-        print(message.text)
-        if (message.text == team1):
+        match = match_dict[chat_id]
+        print("Prediction started for the match: " + match.team1 + " vs. " + match.team2)
+        pred = pred_dict[chat_id]
+        if (message.text == match.team1):
             pred.win = 1
-        elif (message.text == team2):
+        elif (message.text == match.team2):
             pred.win = 2
         elif (message.text == u'Draw'):
             pred.win = 0
         else:
             bot.send_message(chat_id, "Error!")
-        print(pred.win)
+        print("Chat id: " + str(chat_id) + "; Prediction: " + message.text + ' (' + str(pred.win) + ')')
         if (message.text == u'Draw'):
             msg = bot.reply_to(message, "How many goals will each team score?")
             bot.register_next_step_handler(msg, process_goal_step)
@@ -142,7 +147,8 @@ def process_win_step(message):
 def process_goal_step(message):
     try:
         chat_id = message.chat.id
-        global pred
+        pred = pred_dict[chat_id]
+        print("Chat id: " + str(chat_id) + "; Prediction: " + message.text)
         pred.goal = int(message.text)
         underbutton = types.KeyboardButton('< 2.5')
         overbutton = types.KeyboardButton('> 2.5')
@@ -152,11 +158,13 @@ def process_goal_step(message):
         bot.register_next_step_handler(msg, process_total_step)
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
+        print("Unexpected error:", sys.exc_info()[0])
 
 def process_total_step(message):
     try:
         chat_id = message.chat.id
-        global pred
+        pred = pred_dict[chat_id]
+        print("Chat id: " + str(chat_id) + "; Prediction: " + message.text)
         if (message.text == '< 2.5'):
             pred.total = 0
         elif (message.text == '> 2.5'):
