@@ -46,12 +46,16 @@ def add_group(uid, group):
 
 def get_next_match(uid):
     active_matchs = list(matches_collection.find({"active" : 1},{"match_no" : 1, "_id" : 0}))
+    if(len(active_matchs[0]) == 0):
+        return(0)
     predicted_matches = list(predictions_collection.find({"user_id" : uid},{"predicted_matches" : 1, "_id" : 0}))
     active_match_ids = [c['match_no'] for c in active_matchs]
     if (len(predicted_matches[0]) > 0):
         relevant_matches = [c for c in active_match_ids if c not in predicted_matches[0]['predicted_matches']]
     else:
     	relevant_matches = active_match_ids
+    if(len(relevant_matches) == 0):
+        return(0)
     next_match_id = sorted(relevant_matches)[0]
     next_match = list(matches_collection.find({"match_no" : next_match_id},{"_id" : 0}))
     return(next_match)

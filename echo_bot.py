@@ -76,20 +76,24 @@ def send_predict(message):
     global pred
     pred = Prediction(chat_id)
     next_match = db_access.get_next_match(chat_id)
-    pred.matchid = [c['match_no'] for c in next_match][0]
-    team1 = [c['team_1'] for c in next_match][0]
-    team2 = [c['team_2'] for c in next_match][0]
-    stage = [c['type'] for c in next_match][0]
-    if (stage == 'Group'):
-        stage = stage + ' ' + [c['group'] for c in next_match][0]
-    markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
-    # db_access.add_prediction(chat_id, 2, 3, 4, 2)
-    team1button = types.KeyboardButton(team1)
-    team2button = types.KeyboardButton(team2)
-    drawbutton = types.KeyboardButton("Draw")
-    markup.add(team1button, team2button, drawbutton)
-    msg = bot.reply_to(message, stage + ': ' + team1 + ' vs. ' + team2 + '\n Who will win the game?', reply_markup=markup)
-    bot.register_next_step_handler(msg, process_win_step)
+    if(next_match == 0):
+        bot.send_message(chat_id, "Sorry! There are no matches in our database you can currently predict!")
+    else:
+        pred.matchid = [c['match_no'] for c in next_match][0]
+        team1 = [c['team_1'] for c in next_match][0]
+        team2 = [c['team_2'] for c in next_match][0]
+        stage = [c['type'] for c in next_match][0]
+        quote = [c['quote'] for c in next_match][0]
+        if (stage == 'Group'):
+            stage = stage + ' ' + [c['group'] for c in next_match][0]
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
+        # db_access.add_prediction(chat_id, 2, 3, 4, 2)
+        team1button = types.KeyboardButton(team1)
+        team2button = types.KeyboardButton(team2)
+        drawbutton = types.KeyboardButton("Draw")
+        markup.add(team1button, team2button, drawbutton)
+        msg = bot.reply_to(message, stage + ': ' + team1 + ' vs. ' + team2 + '(Quote: ' + str(quote) + ')\n Who will win the game?', reply_markup=markup)
+        bot.register_next_step_handler(msg, process_win_step)
     # bot.send_message(chat_id, "Prediction added")
 
 def process_win_step(message):
@@ -138,8 +142,8 @@ def process_total_step(message):
     db_access.add_prediction(pred.userid, pred.matchid, pred.win, pred.goal, pred.total)
     bot.send_message(chat_id, "Your prediction for this game is saved!")
 
-# @bot.message_handler(func=lambda message: True)
-# def echo_all(message):
-#     bot.reply_to(message, message.text)
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+    # bot.reply_to(message, "Unfortunately we do not support free text. If you see this message, something went wrong (or you just typed some text the bot can not understand).")
 
 bot.polling()
