@@ -20,3 +20,377 @@
 	"quote": 0.7,
 	"active": 1
 }
+{
+	"match_no": 3,
+	"type": "Group",
+	"group": "B",
+	"team_1": "Wales",
+	"team_2": "Slovakia",
+	"stadium": "Stade de Bordeaux",
+	"date": ISODate("2016-06-11T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 4,
+	"type": "Group",
+	"group": "B",
+	"team_1": "England",
+	"team_2": "Russia",
+	"stadium": "Stade Velodrome, Marseille",
+	"date":ISODate("2016-06-11T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 5,
+	"type": "Group",
+	"group": "D",
+	"team_1": "Turkey",
+	"team_2": "Croatia",
+	"stadium": "Parc des Princes, Paris",
+	"date": ISODate("2016-06-12T15:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 6,
+	"type": "Group",
+	"group": "C",
+	"team_1": "Poland",
+	"team_2": "Northern Ireland",
+	"stadium": "Stade de Nice",
+	"date": ISODate("2016-06-12T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 7,
+	"type": "Group",
+	"group": "C",
+	"team_1": "Germany",
+	"team_2": "Ukraine",
+	"stadium": "Stade Pierre Mauroy, Lille",
+	"date": ISODate("2016-06-12T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 8,
+	"type": "Group",
+	"group": "D",
+	"team_1": "Spain",
+	"team_2": "Czech Republic",
+	"stadium": "Stadium de Toulouse",
+	"date": ISODate("2016-06-13T15:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 9,
+	"type": "Group",
+	"group": "E",
+	"team_1": "Rep Ireland",
+	"team_2": "Sweden",
+	"stadium": "Stade de France, Paris",
+	"date": ISODate("2016-06-13T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 10,
+	"type": "Group",
+	"group": "E",
+	"team_1": "Belgium",
+	"team_2": "Italy",
+	"stadium": "Stade de Lyon",
+	"date": ISODate("2016-06-13T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 11,
+	"type": "Group",
+	"group": "F",
+	"team_1": "Austria",
+	"team_2": "Hungary",
+	"stadium": "Stade de Bordeaux",
+	"date": ISODate("2016-06-14T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 12,
+	"type": "Group",
+	"group": "F",
+	"team_1": "Poland",
+	"team_2": "Iceland",
+	"stadium": "Stade Geoffroy Guichard, St Etienne",
+	"date": ISODate("2016-06-14T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 13,
+	"type": "Group",
+	"group": "B",
+	"team_1": "Russia",
+	"team_2": "Slovakia",
+	"stadium": "Stade Pierre Mauroy, Lille",
+	"date": ISODate("2016-06-15T15:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 14,
+	"type": "Group",
+	"group": "A",
+	"team_1": "Romania",
+	"team_2": "Switzerland",
+	"stadium": "Parc des Princes, Paris",
+	"date": ISODate("2016-06-15T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 15,
+	"type": "Group",
+	"group": "A",
+	"team_1": "France",
+	"team_2": "Albania",
+	"stadium": "Stade Velodrome, Marseille",
+	"date": ISODate("2016-06-15T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 16,
+	"type": "Group",
+	"group": "B",
+	"team_1": "England",
+	"team_2": "Wales",
+	"stadium": "Stade Bollaert-Delelis, Lens",
+	"date": ISODate("2016-06-16T15:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 17,
+	"type": "Group",
+	"group": "C",
+	"team_1": "Ukraine",
+	"team_2": "Northern Ireland",
+	"stadium": "Stade de Lyon",
+	"date": ISODate("2016-06-16T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 18,
+	"type": "Group",
+	"group": "C",
+	"team_1": "Germany",
+	"team_2": "Poland",
+	"stadium": "Stade de France, Paris",
+	"date": ISODate("2016-06-16T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 19,
+	"type": "Group",
+	"group": "E",
+	"team_1": "Italy",
+	"team_2": "Sweden",
+	"stadium": "Stadium de Toulouse",
+	"date": ISODate("2016-06-17T15:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 20,
+	"type": "Group",
+	"group": "D",
+	"team_1": "Czech Republic",
+	"team_2": "Croatia",
+	"stadium": "Stade Geoffroy Guichard, St Etienne",
+	"date": ISODate("2016-06-17T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 21,
+	"type": "Group",
+	"group": "D",
+	"team_1": "Spain",
+	"team_2": "Turkey",
+	"stadium": "Stade de Nice",
+	"date": ISODate("2016-06-17T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 22,
+	"type": "Group",
+	"group": "E",
+	"team_1": "Belgium",
+	"team_2": "Rep Ireland",
+	"stadium": "Stade de Bordeaux",
+	"date": ISODate("2016-06-18T15:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 23,
+	"type": "Group",
+	"group": "F",
+	"team_1": "Iceland",
+	"team_2": "Hungary",
+	"stadium": "Stade Velodrome, Marseille",
+	"date": ISODate("2016-06-18T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 24,
+	"type": "Group",
+	"group": "F",
+	"team_1": "Portugal",
+	"team_2": "Austria",
+	"stadium": "Parc des Princes, Paris",
+	"date": ISODate("2016-06-18T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 25,
+	"type": "Group",
+	"group": "A",
+	"team_1": "Romania",
+	"team_2": "Albania",
+	"stadium": "Stade de Lyon",
+	"date": ISODate("2016-06-19T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 26,
+	"type": "Group",
+	"group": "A",
+	"team_1": "Switzerland",
+	"team_2": "France",
+	"stadium": "Stade Pierre Mauroy, Lille",
+	"date": ISODate("2016-06-19T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 27,
+	"type": "Group",
+	"group": "B",
+	"team_1": "Russia",
+	"team_2": "Wales",
+	"stadium": "Stadium de Toulouse",
+	"date": ISODate("2016-06-20T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 28,
+	"type": "Group",
+	"group": "B",
+	"team_1": "Slovakia",
+	"team_2": "England",
+	"stadium": "Stade Geoffroy Guichard, St Etienne",
+	"date": ISODate("2016-06-20T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 29,
+	"type": "Group",
+	"group": "C",
+	"team_1": "Northern Ireland",
+	"team_2": "Germany",
+	"stadium": "Parc des Princes, Paris",
+	"date": ISODate("2016-06-21T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 30,
+	"type": "Group",
+	"group": "C",
+	"team_1": "Ukraine",
+	"team_2": "Poland",
+	"stadium": "Stade Velodrome, Marseille",
+	"date": ISODate("2016-06-21T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 31,
+	"type": "Group",
+	"group": "D",
+	"team_1": "Croatia",
+	"team_2": "Spain",
+	"stadium": "Stade de Bordeaux",
+	"date": ISODate("2016-06-21T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 32,
+	"type": "Group",
+	"group": "D",
+	"team_1": "Czech Republic",
+	"team_2": "Turkey",
+	"stadium": "Stade Bollaert-Delelis, Lens",
+	"date": ISODate("2016-06-21T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 33,
+	"type": "Group",
+	"group": "F",
+	"team_1": "Hungary",
+	"team_2": "Poland",
+	"stadium": "Stade de Lyon",
+	"date": ISODate("2016-06-22T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 34,
+	"type": "Group",
+	"group": "F",
+	"team_1": "Iceland",
+	"team_2": "Austria",
+	"stadium": "Stade de France",
+	"date": ISODate("2016-06-22T18:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 35,
+	"type": "Group",
+	"group": "E",
+	"team_1": "Italy",
+	"team_2": "Rep Ireland",
+	"stadium": "Stade Pierre Mauroy, Lille",
+	"date": ISODate("2016-06-22T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
+{
+	"match_no": 36,
+	"type": "Group",
+	"group": "E",
+	"team_1": "Sweden",
+	"team_2": "Belgium",
+	"stadium": "Stade de Nice",
+	"date": ISODate("2016-06-22T21:00:00Z"),
+	"quote": 0.7,
+	"active": 1
+}
