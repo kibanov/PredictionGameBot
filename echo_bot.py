@@ -172,7 +172,7 @@ def process_total_step(message):
         else:
             msg = bot.send_message(chat_id, "Error!")
         db_access.add_prediction(pred.userid, pred.matchid, pred.win, pred.goal, pred.total)
-        bot.send_message(chat_id, "Your prediction for this game is saved!")
+        bot.send_message(chat_id, "Your prediction for this game is saved! Click /predict to make the next prediction!")
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
 
