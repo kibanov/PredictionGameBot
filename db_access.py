@@ -63,6 +63,10 @@ def get_next_match(uid):
     next_match = list(matches_collection.find({"match_no" : next_match_id},{"_id" : 0}))
     return(next_match)
 
+def refresh_match(dt):
+    res = matches_collection.update({ "date" : {"$lte": dt}}, {"$set" : {"active" : 0}}, multi=True)
+    print(res)
+
 # UPDATE USER:
 def update_user(id):
     return ()
