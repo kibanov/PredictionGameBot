@@ -44,7 +44,8 @@ def send_help(message):
             '/predict Make prediction\n' +
             '/setname Set your name\n' +
             '/setgroup Set your group\n' + 
-            '/rules Show rules')
+            '/rules Show rules\n' +
+            '/today See what happens today')
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
 
@@ -55,6 +56,48 @@ def send_rules(message):
         bot.send_message(chat_id, "You need to answer three questions about each match:\n1. Who will win the game or will there be a draw?\n2. What will be the difference of team goals?\n3. Total of the match?\nYou get 3 points for each correct answer. If all 3 answers are correct, you get an additional point.")
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
+
+@bot.message_handler(commands=['today'])
+def send_today_info(message):
+    try:
+        chat_id = message.chat.id
+        today_matches = db_access.today_matches()
+        if (len(today_matches) == 0):
+            bot.send_message(chat_id, 'No matches today!')
+        today_matches_ids = [c['match_no'] for c in today_matches]
+        user_profile = db_access.get_user(chat_id)
+        info_text = 'Matches and your predictions for today:\n'
+        if (user_profile == 0):
+            return (0)
+        else:
+            user_predictions = user_profile['predictions']
+            today_user_prediction_ids = [c['match_no'] for c in user_predictions if c['match_no'] in today_matches_ids]
+            for match in today_matches:
+                info_text = info_text + match['team_1'] + " vs. " + match['team_2'] + ': '
+                if match['match_no'] in today_user_prediction_ids:
+                    prediction = [c for c in user_predictions if c['match_no'] == match['match_no']][0]
+                    if (prediction['winner'] == 0):
+                        info_text = info_text + 'Draw '
+                        info_text = info_text + str(prediction['goals']) + ':' + str(prediction['goals']) + ', ' 
+                    else:
+                        if (prediction['winner'] == 1):
+                            info_text = info_text + match['team_1']
+                        elif (prediction['winner'] == 2):
+                            info_text = info_text + match['team_2']
+                        info_text = info_text + ' by ' + str(prediction['goals']) + ' goals, '
+                    if (prediction['total'] == 0):
+                        info_text = info_text + '<2.5'
+                    elif (prediction['total'] == 1):
+                        info_text = info_text + '>2.5'
+                else:
+                    info_text = info_text + 'No prediction (yet)'
+                info_text = info_text + '\n'
+            info_text = info_text + 'Click /predict to make Predictions!'
+            bot.send_message(chat_id, info_text)
+    except Exception as e:
+        bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
+
+
 
 @bot.message_handler(commands=['setname'])
 def set_name(message):
@@ -172,7 +215,7 @@ def process_total_step(message):
         else:
             msg = bot.send_message(chat_id, "Error!")
         db_access.add_prediction(pred.userid, pred.matchid, pred.win, pred.goal, pred.total)
-        bot.send_message(chat_id, "Your prediction for this game is saved! Click /predict to make the next prediction!")
+        bot.send_message(chat_id, "Your prediction for this game is saved! Click /predict to make the next prediction! Click /today to see today's matches and your predictions!")
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
 
