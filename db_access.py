@@ -1,4 +1,5 @@
 import pymongo
+from datetime import datetime, timedelta
 
 from pymongo import MongoClient
 client = MongoClient()
@@ -66,7 +67,29 @@ def get_next_match(uid):
 def refresh_match(dt):
     # print()
     res = matches_collection.update({ "date" : {"$lte": dt}}, {"$set" : {"active" : 0}}, multi=True)
-    print(str(dt) + ': ' + str(res))
+    print(str(dt) + ': ' + str(res))    
+
+def get_all_users():
+    all_users = list(predictions_collection.find({},{"_id" :0}))
+    # all_users_ids = [c['user_id'] for c in all_users]
+    # updates = map(update_points, all_users_ids)
+    return (all_users)
+
+def get_all_users_ids():
+    all_users = get_all_users()
+    all_users_ids = [c['user_id'] for c in all_users]
+    return (all_users_ids)
+
+def matches_to_start_till(dt):
+    res = list(matches_collection.find({"date" : {"$lte": dt}}))
+    return(res)
+
+def today_matches():
+    end_of_day = datetime.now().replace(hour = 23, minute = 59, second = 59)
+    start_of_day = datetime.now().replace(hour = 00, minute = 00, second = 1)
+    res = list(matches_collection.find({"date" : {"$lte": end_of_day, "$gte": start_of_day}}))
+    return(res)
+
 
 # UPDATE USER:
 def update_user(id):
