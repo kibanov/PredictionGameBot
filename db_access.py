@@ -64,8 +64,9 @@ def get_next_match(uid):
     return(next_match)
 
 def refresh_match(dt):
+    # print()
     res = matches_collection.update({ "date" : {"$lte": dt}}, {"$set" : {"active" : 0}}, multi=True)
-    print(res)
+    print(str(dt) + ': ' + str(res))
 
 # UPDATE USER:
 def update_user(id):
