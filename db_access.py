@@ -1,4 +1,5 @@
 import pymongo
+from math import round
 from datetime import datetime, timedelta
 
 from pymongo import MongoClient
@@ -136,7 +137,7 @@ def get_prediction_points(prediction, match):
     if (points == 9):
         points = 10
 
-    res = points * quote
+    res = round(points * quote, 1)
     return (res)
 
 # UPDATE USER:

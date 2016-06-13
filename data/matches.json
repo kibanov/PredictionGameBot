@@ -119,7 +119,10 @@
 	"stadium": "Stade de France, Paris",
 	"date": ISODate("2016-06-13T18:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished": 1,
+	"goals_team_1" : 1,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 10,
@@ -130,7 +133,10 @@
 	"stadium": "Stade de Lyon",
 	"date": ISODate("2016-06-13T21:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished": 1,
+	"goals_team_1" : 0,
+	"goals_team_2" : 2
 }
 {
 	"match_no": 11,
