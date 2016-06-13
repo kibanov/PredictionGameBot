@@ -7,7 +7,10 @@
 	"stadium": "Stade de France, Saint-Denis",
 	"date": ISODate("2016-06-10T21:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 2,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 2,
@@ -18,7 +21,10 @@
 	"stadium": "Stade Bollaert-Delelis, Lens",
 	"date": ISODate("2016-06-11T15:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 0,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 3,
@@ -29,7 +35,10 @@
 	"stadium": "Stade de Bordeaux",
 	"date": ISODate("2016-06-11T18:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished": 1,
+	"goals_team_1" : 2,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 4,
@@ -40,7 +49,10 @@
 	"stadium": "Stade Velodrome, Marseille",
 	"date":ISODate("2016-06-11T21:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished": 1,
+	"goals_team_1" : 1,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 5,
@@ -51,7 +63,10 @@
 	"stadium": "Parc des Princes, Paris",
 	"date": ISODate("2016-06-12T15:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished": 1,
+	"goals_team_1" : 0,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 6,
@@ -62,7 +77,10 @@
 	"stadium": "Stade de Nice",
 	"date": ISODate("2016-06-12T18:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished": 1,
+	"goals_team_1" : 1,
+	"goals_team_2" : 0
 }
 {
 	"match_no": 7,
@@ -73,7 +91,10 @@
 	"stadium": "Stade Pierre Mauroy, Lille",
 	"date": ISODate("2016-06-12T21:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished": 1,
+	"goals_team_1" : 2,
+	"goals_team_2" : 0
 }
 {
 	"match_no": 8,
@@ -84,7 +105,10 @@
 	"stadium": "Stadium de Toulouse",
 	"date": ISODate("2016-06-13T15:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished": 1,
+	"goals_team_1" : 1,
+	"goals_team_2" : 0
 }
 {
 	"match_no": 9,
@@ -123,7 +147,7 @@
 	"match_no": 12,
 	"type": "Group",
 	"group": "F",
-	"team_1": "Poland",
+	"team_1": "Portugal",
 	"team_2": "Iceland",
 	"stadium": "Stade Geoffroy Guichard, St Etienne",
 	"date": ISODate("2016-06-14T21:00:00Z"),
