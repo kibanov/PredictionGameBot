@@ -106,19 +106,32 @@ def ranking_to_str(group, ranking):
 
 @bot.message_handler(commands=['ranking'])
 def get_ranking(message):
-    chat_id = message.chat.id
-    groups = db_access.get_groups(chat_id)
-    if (len(groups) == 0):
-        msg = bot.reply_to(message, "You are not a member of any groups!")
-    else:
-        user_groups = groups['groups']
-        for group in user_groups:
-            ranking = db_access.get_ranking(group)
-            ranking_sorted = sorted(ranking, key=lambda k: k['total_points'], reverse = True)
-            ranking_str = ranking_to_str(group, ranking_sorted)
-            msg = bot.reply_to(message, ranking_str)
+    try:
+        chat_id = message.chat.id
+        groups = db_access.get_groups(chat_id)
+        if (len(groups) == 0):
+            msg = bot.reply_to(message, "You are not a member of any groups! Please enter the name of the group you want to get ranking!")
+            bot.register_next_step_handler(msg, process_ranking)
+        else:
+            user_groups = groups['groups']
+            for group in user_groups:
+                ranking = db_access.get_ranking(group)
+                ranking_sorted = sorted(ranking, key=lambda k: k['total_points'], reverse = True)
+                ranking_str = ranking_to_str(group, ranking_sorted)
+                msg = bot.reply_to(message, ranking_str)
+    except Exception as e:
+        bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
 
-
+def process_ranking(message):
+    try:
+        chat_id = message.chat.id
+        group = message.text
+        ranking = db_access.get_ranking(group)
+        ranking_sorted = sorted(ranking, key=lambda k: k['total_points'], reverse = True)
+        ranking_str = ranking_to_str(group, ranking_sorted)
+        msg = bot.reply_to(message, ranking_str)
+    except Exception as e:
+        bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
     
 
 @bot.message_handler(commands=['setname'])
