@@ -49,6 +49,20 @@ def add_group(uid, group):
         {"user_id": uid},
         {"$addToSet": {"groups" : group}})
 
+def get_groups(uid):
+    result = list(predictions_collection.find({"user_id" : uid},{"_id" : 0, "groups" : 1}))
+    if (len(result) > 0):
+        return(result[0])
+    else:
+        return 0
+
+def get_ranking(gname):
+    result = list(predictions_collection.find(
+        {"groups" : {"$in" : [gname]}},
+        {"name" : 1, "total_points": 1, "_id" : 0}))
+    return (result)
+
+
 def get_next_match(uid):
     active_matchs = list(matches_collection.find({"active" : 1},{"match_no" : 1, "_id" : 0}))
     if(len(active_matchs[0]) == 0):
@@ -163,7 +177,7 @@ def update_user_points(uid):
         total_points = 0
     predictions_collection.update(  {"user_id" : uid},
                                     {"$set" : {"total_points" : total_points}})
-    return (total_points)
+    return (round(total_points, 1))
 
 def update_all_users_points():
     users = get_all_users_ids()

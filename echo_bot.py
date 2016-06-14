@@ -45,7 +45,8 @@ def send_help(message):
             '/setname Set your name\n' +
             '/setgroup Set your group\n' + 
             '/rules Show rules\n' +
-            '/today See what happens today')
+            '/today See what happens today\n' +
+            '/ranking See the ranking of your groups')
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
 
@@ -97,7 +98,28 @@ def send_today_info(message):
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
 
+def ranking_to_str(group, ranking):
+    result = group + '\n'
+    for rank in ranking:
+        result = result + rank['name'] + '   ' + str(rank['total_points']) + '\n'
+    return result
 
+@bot.message_handler(commands=['ranking'])
+def get_ranking(message):
+    chat_id = message.chat.id
+    groups = db_access.get_groups(chat_id)
+    if (len(groups) == 0):
+        msg = bot.reply_to(message, "You are not a member of any groups!")
+    else:
+        user_groups = groups['groups']
+        for group in user_groups:
+            ranking = db_access.get_ranking(group)
+            ranking_sorted = sorted(ranking, key=lambda k: k['total_points'], reverse = True)
+            ranking_str = ranking_to_str(group, ranking_sorted)
+            msg = bot.reply_to(message, ranking_str)
+
+
+    
 
 @bot.message_handler(commands=['setname'])
 def set_name(message):

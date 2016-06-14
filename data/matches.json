@@ -147,7 +147,10 @@
 	"stadium": "Stade de Bordeaux",
 	"date": ISODate("2016-06-14T18:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished": 1,
+	"goals_team_1" : 0,
+	"goals_team_2" : 2
 }
 {
 	"match_no": 12,
@@ -158,7 +161,10 @@
 	"stadium": "Stade Geoffroy Guichard, St Etienne",
 	"date": ISODate("2016-06-14T21:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 1,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 13,
