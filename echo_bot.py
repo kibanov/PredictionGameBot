@@ -46,7 +46,8 @@ def send_help(message):
             '/setgroup Set your group\n' + 
             '/rules Show rules\n' +
             '/today See what happens today\n' +
-            '/ranking See the ranking of your groups')
+            '/ranking See the ranking of your groups\n' +
+            '/current See the predictions for current match')
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
 
@@ -95,6 +96,42 @@ def send_today_info(message):
                 info_text = info_text + '\n'
             info_text = info_text + 'Click /predict to make Predictions!'
             bot.send_message(chat_id, info_text)
+    except Exception as e:
+        bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
+
+@bot.message_handler(commands=['current'])
+def send_current_match_info(message):
+    try:
+        chat_id = message.chat.id
+        user_profile = db_access.get_user(chat_id)
+        current_matches = db_access.current_matches()
+        if(len(current_matches) == 0):
+            bot.send_message(chat_id, 'There are no matches now!')
+        else:
+            for match in current_matches:
+                predictions_for_match = db_access.get_predictions_match(match, user_profile)
+                string_to_send = match['team_1'] + " vs. " + match['team_2'] + ':\n'
+                for prediction_for_match in predictions_for_match:
+                    if ('name' in prediction_for_match):
+                        string_to_send = string_to_send + prediction_for_match['name'] + ': '
+                    if ('predictions' in prediction_for_match):
+                        prediction_l = prediction_for_match['predictions']
+                        prediction = prediction_l[0]
+                        if (prediction['winner'] == 0):
+                            string_to_send = string_to_send + 'Draw ' + str(prediction['goals']) + ':' + str(prediction['goals']) + ', '
+                        else:
+                            if (prediction['winner'] == 1):
+                                string_to_send = string_to_send + match['team_1']
+                            elif (prediction['winner'] == 2):
+                                string_to_send = string_to_send + match['team_2']
+                            string_to_send = ' by ' + str(prediction['goals']) + ' goals, '
+                        if (prediction['total'] == 0):
+                            string_to_send = string_to_send + '<2.5\n'
+                        elif (prediction['total'] == 1):
+                            string_to_send = string_to_send + '>2.5\n'
+                    else:
+                        string_to_send = string_to_send + 'No prediction\n'
+                bot.send_message(chat_id, string_to_send)
     except Exception as e:
         bot.reply_to(message, 'Something went wrong! Please, contact the provider of this bot!')
 

@@ -79,6 +79,10 @@ def get_next_match(uid):
     next_match = list(matches_collection.find({"match_no" : next_match_id},{"_id" : 0}))
     return(next_match)
 
+def current_matches():
+    res = list(matches_collection.find({"active" : 0, "finished" : 0}))
+    return (res)
+
 def refresh_match(dt):
     res = matches_collection.update({ "date" : {"$lte": dt}}, {"$set" : {"active" : 0}}, multi=True)
     print(str(dt) + ': ' + str(res))    
@@ -109,6 +113,12 @@ def today_matches():
     res = list(matches_collection.find({"date" : {"$lte": end_of_day, "$gte": start_of_day}}))
     return(res)
 
+def get_predictions_match(match, user_profile):
+    mid = match['match_no']
+    ugroups = user_profile['groups']
+    res = list(predictions_collection.find({"groups" : {"$in": ugroups}},
+        {"name" : 1, "predictions" : {"$elemMatch" : {"match_no" : mid}}, "_id" : 0}))
+    return (res)
 
 def get_match(mid):
     matches = list(matches_collection.find({"match_no" : mid}))
