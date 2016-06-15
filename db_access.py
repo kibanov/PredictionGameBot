@@ -172,12 +172,12 @@ def update_user_points(uid):
         user = get_user(uid)
         user_predictions = user['predictions']
         all_user_points = [c['points'] for c in user_predictions]
-        total_points = sum(all_user_points)
+        total_points = round(sum(all_user_points),1)
     else:
         total_points = 0
     predictions_collection.update(  {"user_id" : uid},
                                     {"$set" : {"total_points" : total_points}})
-    return (round(total_points, 1))
+    return (total_points)
 
 def update_all_users_points():
     users = get_all_users_ids()

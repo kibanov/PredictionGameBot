@@ -175,7 +175,10 @@
 	"stadium": "Stade Pierre Mauroy, Lille",
 	"date": ISODate("2016-06-15T15:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 1,
+	"goals_team_2" : 2
 }
 {
 	"match_no": 14,
