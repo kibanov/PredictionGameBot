@@ -189,7 +189,10 @@
 	"stadium": "Parc des Princes, Paris",
 	"date": ISODate("2016-06-15T18:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 1,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 15,
@@ -200,7 +203,10 @@
 	"stadium": "Stade Velodrome, Marseille",
 	"date": ISODate("2016-06-15T21:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 2,
+	"goals_team_2" : 0
 }
 {
 	"match_no": 16,
@@ -211,7 +217,10 @@
 	"stadium": "Stade Bollaert-Delelis, Lens",
 	"date": ISODate("2016-06-16T15:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 2,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 17,
@@ -222,7 +231,10 @@
 	"stadium": "Stade de Lyon",
 	"date": ISODate("2016-06-16T18:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 0,
+	"goals_team_2" : 2
 }
 {
 	"match_no": 18,
@@ -233,7 +245,10 @@
 	"stadium": "Stade de France, Paris",
 	"date": ISODate("2016-06-16T21:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 0,
+	"goals_team_2" : 0
 }
 {
 	"match_no": 19,
@@ -244,7 +259,10 @@
 	"stadium": "Stadium de Toulouse",
 	"date": ISODate("2016-06-17T15:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 1,
+	"goals_team_2" : 0
 }
 {
 	"match_no": 20,
@@ -255,7 +273,10 @@
 	"stadium": "Stade Geoffroy Guichard, St Etienne",
 	"date": ISODate("2016-06-17T18:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 2,
+	"goals_team_2" : 2
 }
 {
 	"match_no": 21,
@@ -266,7 +287,10 @@
 	"stadium": "Stade de Nice",
 	"date": ISODate("2016-06-17T21:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 3,
+	"goals_team_2" : 0
 }
 {
 	"match_no": 22,
@@ -277,7 +301,10 @@
 	"stadium": "Stade de Bordeaux",
 	"date": ISODate("2016-06-18T15:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 3,
+	"goals_team_2" : 0
 }
 {
 	"match_no": 23,
@@ -288,7 +315,10 @@
 	"stadium": "Stade Velodrome, Marseille",
 	"date": ISODate("2016-06-18T18:00:00Z"),
 	"quote": 0.7,
-	"active": 1
+	"active": 1,
+	"finished" : 1,
+	"goals_team_1" : 1,
+	"goals_team_2" : 1
 }
 {
 	"match_no": 24,
