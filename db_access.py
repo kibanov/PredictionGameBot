@@ -1,11 +1,14 @@
-import pymongo
+import yaml
 # import math
 from datetime import datetime, timedelta
 
 from pymongo import MongoClient
+
+config = yaml.safe_load(open("conf.yml"))
+
 client = MongoClient()
 client = MongoClient('localhost', 27017)
-eurodb = client.euro16
+eurodb = client[config['db']]
 predictions_collection = eurodb.predictions
 matches_collection = eurodb.matches
 
@@ -136,30 +139,41 @@ def get_prediction_points(prediction, match):
     pred_goals = prediction['goals']
     pred_total = prediction['total']
     points = 0
+    correct_predictions = 0
     # Points for winner of the match:
+    # Draw (more points are given)
     if (pred_winner == 0 and goals_team_1 == goals_team_2):
-        points = points + 3
+        points = points + 4
+        correct_predictions = correct_predictions + 1
     elif (pred_winner == 1 and goals_team_1 > goals_team_2):
         points = points + 3
+        correct_predictions = correct_predictions + 1
     elif (pred_winner == 2 and goals_team_2 > goals_team_1):
         points = points + 3
+        correct_predictions = correct_predictions + 1
 
     # Points for goal difference:
-    if (points == 3):
-        if (pred_winner == 0 and pred_goals == goals_team_1):
-            points = points + 3
-        elif (pred_winner != 0 and pred_goals == abs(goals_team_1 - goals_team_2)):
-            points = points +3
+    if (correct_predictions == 1):
+        # Draw:
+        if (pred_winner == 0 and pred_goals == min(goals_team_1, 2)):
+            points = points + 2
+            correct_predictions = correct_predictions + 1
+        # One of the teams wins:
+        elif (pred_winner != 0 and pred_goals == min(abs(goals_team_1 - goals_team_2),3)):
+            points = points + 2
+            correct_predictions = correct_predictions + 1
 
     # Points for total:
     if (pred_total == 0 and (goals_team_1 + goals_team_2) < 3):
-        points = points + 3
+        points = points + 2
+        correct_predictions = correct_predictions + 1
     if (pred_total == 1 and (goals_team_1 + goals_team_2) > 2):
-        points = points + 3
+        points = points + 2
+        correct_predictions = correct_predictions + 1
 
     # Bonus points:
-    if (points == 9):
-        points = 10
+    if (correct_predictions == 3):
+        points = points + 1
     res = round(points * quote, 1)
     return (res)
 

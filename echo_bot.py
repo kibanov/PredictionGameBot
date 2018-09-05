@@ -176,7 +176,10 @@ def ranking_to_str(group, ranking):
     result = group + '\n'
     # TODO: add formatting (probably, with additional function)
     for rank in ranking:
-        result = result + rank['name'] + '   ' + str(rank['total_points']) + '\n'
+        if ('name' in rank):
+            result = result + rank['name'] + '   ' + str(rank['total_points']) + '\n'
+        else:
+            result = result +  '   ' + str(rank['total_points']) + '\n'
     return result
 
 
